@@ -48,7 +48,7 @@ def main():
     rhoMc, uMc, EMc, MMc = mainMcCormack(i_Max, Eqns, gamma, cfl, Area, dAdx, dx, rho, u, P, E, Q)
     
     figNum = 1
-    fileName = 'density'+str(cfl*10)
+    fileName = 'density'
     plotTitle = 'Density, CFL=' + str(cfl)
     label1 = 'Upwind'
     label2 = 'McCormack'
@@ -56,13 +56,13 @@ def main():
     plot(figNum, fileName, plotTitle, ylabel, label1, label2, x, rhoUp, rhoMc)
 
     figNum = 2
-    fileName = 'velocity'+str(cfl*10)
+    fileName = 'velocity'
     plotTitle = 'Velocity, CFL=' + str(cfl)
     ylabel = 'velocity (m.s^-1)'
     plot(figNum, fileName, plotTitle, ylabel, label1, label2, x, uUp, uMc)
 
     figNum = 3
-    fileName = 'mach'+str(cfl*10)
+    fileName = 'mach'
     plotTitle = 'Mach, CFL=' + str(cfl)
     ylabel = 'mach (m.s^-1)'
     plot(figNum, fileName, plotTitle, ylabel, label1, label2, x, MUp, MMc)
