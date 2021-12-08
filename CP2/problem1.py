@@ -2,8 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
+from visualization import *
 
-def main():
+def problem1():
 
     a = 1.0
     tmax = 10
@@ -100,83 +101,6 @@ def rungeKutta(u, nx, c):
 
     return u
 
-def animPlot(x, u):
-
-    fig, ax = plt.subplots()
-
-
-    line, = ax.plot(x, u[0], marker = 'o', linestyle = 'None')
-
-
-    def animate(i):
-        line.set_ydata(u[i])  # update the data.
-        return line,
-
-
-    ani = animation.FuncAnimation(
-        fig, animate, interval=10, blit=True, save_count=50)
-
-    # To save the animation, use e.g.
-    #
-    #ani.save("RK3.mp4")
-    #
-    # or
-    #
-    #writer = animation.FFMpegWriter(
-    #    fps=15, metadata=dict(artist='Me'), bitrate=1800)
-    #ani.save("RK3.mp4", writer=writer)
-
-    #plt.show()
-
-
-def animPlotE(x, u, uE):
-
-    fig, ax = plt.subplots()
-
-    line, = ax.plot(x, u[0], 'b', label='RK3')
-    lineE, = ax.plot(x, uE[0], 'r', label='Exact', marker = 'o', markerfacecolor='None', linestyle = 'None')
-
-
-    def animate(i):
-        line.set_ydata(u[i])
-        lineE.set_ydata(uE[i])
-        return line, lineE
-
-    plt.title('Runge Kutta 3th order')
-    plt.xlabel('time (s)')
-    plt.ylabel('velocity (m.s^-1)')
-    plt.legend()
-
-    ani = animation.FuncAnimation(
-        fig, animate, interval=100, blit=True, save_count=50)
-
-    # To save the animation, use e.g.
-    #
-    #ani.save("RK3.mp4")
-    #
-    # or
-    #
-    writer = animation.FFMpegWriter(
-        fps=15, metadata=dict(artist='Me'), bitrate=1800)
-    ani.save("RK3.mp4", writer=writer)
-
-    #plt.show()
-
-def plot(figNum, fileName, plotTitle, label1, label2, label3, label4, x, phi1, phi2, phi3, phi4):
-
-    plt.figure(figNum)
-    plt.plot(x, phi1, 'b', label=label1)
-    plt.plot(x, phi2, 'r', label=label2)
-    plt.plot(x, phi3, 'g', label=label3)
-    plt.plot(x, phi4, 'k', label=label4, marker = 'o', markerfacecolor='none', linestyle = 'None')
-    plt.title(plotTitle)
-    plt.xlabel('time (s)')
-    plt.ylabel('velocity (m.s^-1)')
-    plt.legend()
-    filename = fileName
-    plt.savefig(filename, dpi = 200)
-
-
 
 if __name__ == "__main__":
-    main()
+    problem1()
